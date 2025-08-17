@@ -1,0 +1,66 @@
+baseURL = "https://groundup.dev/"
+languageCode = "en-us"
+title = "GroundUp: Security & AI from Scratch"
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 10
+
+[services.disqus]
+  shortname = "groundup-sec-ai"  # <-- replace with your real Disqus shortname, no '@'
+
+[params]
+  description = "Documenting a beginner’s journey into cybersecurity and AI with reproducible labs, honest notes, and practical takeaways."
+  showReadingTime = true
+  recentPostsTitle = "Latest Posts"
+  dateFormat = "2006-01-02"
+
+  # Author block MUST be a table
+  [params.author]
+    name = "Alex Reed"
+    bio = "Learning in public. One tiny win per week."
+    avatar = "/images/avatar.png"  # put the file at static/images/avatar.png
+
+# Social icons (matches theme docs)
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/groundup-sec-ai"
+
+[[params.socialIcons]]
+name = "twitter"
+url = "https://x.com/groundup_sec_ai"
+
+[[params.socialIcons]]
+name = "Rss"
+url = "/index.xml"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "labs"
+    name = "Labs"
+    url = "/labs/"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 3
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[module]
+  [[module.imports]]
+    path = "github.com/hugo-sid/hugo-blog-awesome"
+
