@@ -1,5 +1,36 @@
-{{- $src := .Get "src" -}}
-{{- $alt := .Get "alt" | default "" -}}
+{{- /* img shortcode */ -}}
+{{- $srcParam := .Get "src" -}}
+{{- $u := urls.Parse $srcParam -}}
+{{- $src := $u.String -}}
+{{- $alt := (.Get "alt" | default (.Inner | plainify)) -}}
 {{- $w := .Get "width" | default "" -}}
-<img src="{{ $src }}" alt="{{ $alt }}" {{ if $w }}width="{{ $w }}"{{ end }}>
+
+{{- if not $u.IsAbs -}}
+  {{- $path := strings.TrimPrefix "./" $u.Path -}}
+  {{- $res := or (.Page.Resources.GetMatch $path) (resources.Get $path) -}}
+  {{- with $res -}}
+    {{- $src = .RelPermalink -}}
+    {{- with $u.RawQuery -}}{{- $src = printf "%s?%s" $src . -}}{{- end -}}
+    {{- with $u.Fragment -}}{{- $src = printf "%s#%s" $src . -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* collect optional known attributes from named params */ -}}
+{{- $optKeys := slice "class" "loading" "decoding" "sizes" "srcset" "height" "style" "referrerpolicy" "fetchpriority" -}}
+{{- $opt := dict -}}
+{{- range $k := $optKeys -}}
+  {{- with ($.Get $k) -}}
+    {{- $opt = merge $opt (dict $k .) -}}
+  {{- end -}}
+{{- end -}}
+
+<img src="{{ $src }}"
+     alt="{{ $alt | transform.HTMLEscape }}"
+     {{- with $w }} width="{{ . }}"{{ end -}}
+     {{- range $k, $v := $opt -}}
+       {{- printf " %s=%q" $k ($v | transform.HTMLEscape) | safeHTMLAttr -}}
+     {{- end -}}
+>
+
+{{- /* end */ -}}
 
