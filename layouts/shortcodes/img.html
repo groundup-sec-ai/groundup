@@ -2,7 +2,7 @@
 {{- $srcParam := .Get "src" -}}
 {{- $u := urls.Parse $srcParam -}}
 {{- $src := $u.String -}}
-{{- $alt := (.Get "alt" | default (.Inner | plainify)) -}}
+{{- $alt := (.Get "alt" | default "") -}}
 {{- $w := .Get "width" | default "" -}}
 
 {{- if not $u.IsAbs -}}
