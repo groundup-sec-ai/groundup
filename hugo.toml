@@ -7,7 +7,7 @@ enableRobotsTXT = true
   pagerSize = 10
 
 [services.disqus]
-  shortname = "groundup-sec-ai"  # <-- replace with your real Disqus shortname, no '@'
+  shortname = "groundup-1"  # <-- replace with your real Disqus shortname, no '@'
 
 [params]
   description = "Documenting a beginner’s journey into cybersecurity and AI with reproducible labs, honest notes, and practical takeaways."
