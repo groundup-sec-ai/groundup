@@ -64,3 +64,6 @@ url = "/index.xml"
   [[module.imports]]
     path = "github.com/hugo-sid/hugo-blog-awesome"
 
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
