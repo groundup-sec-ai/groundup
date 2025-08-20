@@ -64,6 +64,15 @@ url = "/index.xml"
   [[module.imports]]
     path = "github.com/hugo-sid/hugo-blog-awesome"
 
+  # Fix found at https://discourse.gohugo.io/t/images-not-showing-on-github-pages/50435/4
+  [[module.mounts]]
+    source = 'assets'
+    target = 'assets'
+
+  [[module.mounts]]
+    source = 'static'
+    target = 'assets'
+
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
