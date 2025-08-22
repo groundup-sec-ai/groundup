@@ -1,0 +1,5 @@
+{{/* Only load analytics when NOT running `hugo server` */}}
+{{ if not hugo.IsServer }}
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="494d0811-41c7-4625-8123-2e094d6020f9"></script>
+{{ end }}
+

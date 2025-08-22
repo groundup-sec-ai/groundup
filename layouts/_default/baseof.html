@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  {{ partial "head.html" . }}          <!-- theme’s head -->
+  {{ partial "analytics.html" . }}     <!-- your analytics -->
+</head>
+<body>
+  {{ block "main" . }}{{ end }}
+</body>
+</html>
+
